@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: ai-agent
+  profiles:
+    active: local
+  ai:
+    dashscope:
+      chat:
+        options:
+          model: qwen-plus
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        dimensions: 1536
+        distance-type: COSINE_DISTANCE
+        max-document-batch-size: 10000
+    mcp:
+      client:
+        stdio:
+          servers-configuration: classpath:mcp-servers.json
+
+  datasource:
+    url: jdbc:postgresql://pgm-2ze0v905ma8i0t30io.rwlb.rds.aliyuncs.com:5432/ai_agent
+    username: root1_pxq_123
+    password: Pxq1996@
+
+
+server:
+  port: 8123
+  servlet:
+    # 启动的时候必须带api为前缀的路径才可访问
+    context-path: /api
+
+
+# springdoc-openapi项目配置
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.pxq.aiagent.controller
+# knife4j的增强配置，不需要增强可以不配
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
