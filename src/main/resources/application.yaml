@@ -20,9 +20,9 @@ spring:
           servers-configuration: classpath:mcp-servers.json
 
   datasource:
-    url: jdbc:postgresql://pgm-2ze0v905ma8i0t30io.rwlb.rds.aliyuncs.com:5432/ai_agent
-    username: root1_pxq_123
-    password: Pxq1996@
+    url: database-url
+    username: your-user-name
+    password: your-pwd
 
 
 server:
